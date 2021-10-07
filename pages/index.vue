@@ -26,7 +26,9 @@ export default {
     };
   },
   async fetch() {
-    this.message = await this.$http.get('/api/message?name=Sebastian');
+    console.log('running the fetch function');
+    const response = await fetch('/api/message?name=Sebastian');
+    this.message = await response.json();
   },
   fetchOnServer: false,
   created() {
