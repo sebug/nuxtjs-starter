@@ -47,7 +47,7 @@
             target="_blank"
           >
             <GithubIcon v-bind:w="24" v-bind:h="24" />
-            Learn more...
+            Learn more!
           </a>
         </div>
       </div>
