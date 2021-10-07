@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <h1>Here are some of my options</h1>
+    <h1>{{ message }}</h1>
     <div class="card-grid">
       <SmallCard
         v-bind:key="project.id"
@@ -20,8 +20,15 @@ import SmallCard from "~/components/SmallCard.vue";
 import { projects } from "../utils/projectsData";
 export default {
   data() {
-    return { projects };
+    return {
+      projects: projects,
+      message: 'Before loading'
+    };
   },
+  async fetch() {
+    this.message = await this.$http.get('/api/message?name=Sebastian');
+  },
+  fetchOnServer: false,
   created() {
     // console.log(projects);
   },
