@@ -32,7 +32,7 @@ export default {
     console.log('running the fetch function');
     const response = await fetch('/api/message?name=Sebastian');
     console.log('Response is ' + response);
-    this.message = await response.json();
+    this.message = await response.text();
     console.log('after setting message');
   },
   fetchOnServer: false,
