@@ -1,6 +1,9 @@
 <template>
   <div class="home">
-    <h1>{{ message }}</h1>
+    <div class="title">
+    <h1 v-if="$fetchState.pending">Hello Default</h1>
+    <h1 v-else>{{ message }}</h1>
+    </div>
     <div class="card-grid">
       <SmallCard
         v-bind:key="project.id"
@@ -28,7 +31,9 @@ export default {
   async fetch() {
     console.log('running the fetch function');
     const response = await fetch('/api/message?name=Sebastian');
+    console.log('Response is ' + response);
     this.message = await response.json();
+    console.log('after setting message');
   },
   fetchOnServer: false,
   created() {
